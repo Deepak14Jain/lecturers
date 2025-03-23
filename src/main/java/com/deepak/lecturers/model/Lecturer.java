@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.Set;
 
 @Entity
 @Table(name = "Lecturers")
@@ -16,15 +14,17 @@ import java.util.UUID;
 public class Lecturer {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "displayIdSequence")
-    int id;
+    Integer id;
     String lecturerName;
     String lecturerAddr;
-
-    @ManyToOne()
-    private Department department;
     String email;
     String phone;
 
-    @ManyToMany(mappedBy = "lecturerList")
-    private List<Course> courseList = new ArrayList<>();
+    @ElementCollection(targetClass = Department.class)
+    @Enumerated(EnumType.STRING)
+    private Set<Department> departments;
+
+    @ElementCollection(targetClass = Course.class)
+    @Enumerated(EnumType.STRING)
+    private Set<Course> courses;
 }

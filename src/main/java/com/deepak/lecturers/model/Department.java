@@ -1,23 +1,22 @@
 package com.deepak.lecturers.model;
 
-import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+public enum Department {
+    COMPUTER_SCIENCE,
+    MECHANICAL_ENGINEERING,
+    ELECTRICAL_ENGINEERING,
+    CIVIL_ENGINEERING,
+    MATHEMATICS,
+    PHYSICS,
+    CHEMISTRY,
+    BIOLOGY,
+    BUSINESS_ADMINISTRATION,
+    ECONOMICS,
+    PSYCHOLOGY,
+    ENGLISH,
+    HISTORY;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@Entity
-@Table(name = "Departments")
-@Data
-@NoArgsConstructor
-@SequenceGenerator(name = "displayIdSequence", initialValue = 1000, allocationSize = 1)
-public class Department {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "displayIdSequence")
-    int id;
-    String deptName;
-
-    @OneToMany(mappedBy = "department", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-    private List<Lecturer> lecturerList= new ArrayList<>();
+    @Override
+    public String toString() {
+        return name().replace("_", " ");
+    }
 }

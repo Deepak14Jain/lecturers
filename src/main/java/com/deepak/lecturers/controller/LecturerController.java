@@ -1,5 +1,7 @@
 package com.deepak.lecturers.controller;
 
+import com.deepak.lecturers.model.Course;
+import com.deepak.lecturers.model.Department;
 import com.deepak.lecturers.model.Lecturer;
 import com.deepak.lecturers.service.LecturerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,13 +40,13 @@ public class LecturerController {
         lecturerService.deleteLecturerByIdSvc(lecturerId);
     }
 
-    @GetMapping("/getLecturerByDepartmentId/{deptId}")
-    public List<Lecturer> getLecturersByDepartmentId(@PathVariable int deptId){
-        return lecturerService.getLecturersByDepartmentIdSvc(deptId);
+    @GetMapping("/getLecturerByDepartment")
+    public List<Lecturer> getLecturersByDepartment(@RequestParam Department department){
+        return lecturerService.getLecturersByDepartmentSvc(department);
     }
 
-    @GetMapping("/getLecturerByCourseId/{courseId}")
-    public List<Lecturer> getLecturersByCourseId(@PathVariable int courseId){
-        return lecturerService.getLecturersByCourseIdSvc(courseId);
+    @GetMapping("/getLecturerByCourse")
+    public List<Lecturer> getLecturersByCourse(@RequestParam Course course){
+        return lecturerService.getLecturersByCourseSvc(course);
     }
 }

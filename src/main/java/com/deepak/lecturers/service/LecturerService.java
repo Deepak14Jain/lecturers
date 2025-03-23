@@ -1,5 +1,7 @@
 package com.deepak.lecturers.service;
 
+import com.deepak.lecturers.model.Course;
+import com.deepak.lecturers.model.Department;
 import com.deepak.lecturers.model.Lecturer;
 import com.deepak.lecturers.repository.LecturerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,12 +46,12 @@ public class LecturerService implements ILecturerService{
     }
 
     @Override
-    public List<Lecturer> getLecturersByDepartmentIdSvc(int deptId) {
-        return lecturerRepository.findAllByDepartmentId(deptId);
+    public List<Lecturer> getLecturersByDepartmentSvc(Department department) {
+        return lecturerRepository.findAllByDepartments(department);
     }
 
     @Override
-    public List<Lecturer> getLecturersByCourseIdSvc(int courseId) {
-        return lecturerRepository.findAllByCourseId(courseId);
+    public List<Lecturer> getLecturersByCourseSvc(Course course) {
+        return lecturerRepository.findAllByCourses(course);
     }
 }

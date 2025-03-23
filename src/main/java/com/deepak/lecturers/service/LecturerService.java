@@ -36,6 +36,8 @@ public class LecturerService implements ILecturerService{
         updatedLecturer.setLecturerAddr(lecturer.getLecturerAddr());
         updatedLecturer.setEmail(lecturer.getEmail());
         updatedLecturer.setPhone(lecturer.getPhone());
+        updatedLecturer.setDepartments(lecturer.getDepartments());
+        updatedLecturer.setCourses(lecturer.getCourses());
         lecturerRepository.save(updatedLecturer);
         return updatedLecturer;
     }

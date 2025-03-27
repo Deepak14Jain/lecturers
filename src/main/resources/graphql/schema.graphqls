@@ -1,0 +1,57 @@
+type Lecturer {
+    id: ID!
+    lecturerName: String
+    lecturerAddr: String
+    email: String
+    phone: String
+    departments: [Department]
+    courses: [Course]
+}
+
+enum Department {
+    COMPUTER_SCIENCE
+    MECHANICAL_ENGINEERING
+    ELECTRICAL_ENGINEERING
+    CIVIL_ENGINEERING
+    MATHEMATICS
+    PHYSICS
+    CHEMISTRY
+    BIOLOGY
+    BUSINESS_ADMINISTRATION
+    ECONOMICS
+    PSYCHOLOGY
+    ENGLISH
+    HISTORY
+}
+
+enum Course {
+    MATHEMATICS
+    PHYSICS
+    COMPUTER_SCIENCE
+    CHEMISTRY
+    BIOLOGY
+    HISTORY
+    LITERATURE
+    ECONOMICS
+    PHILOSOPHY
+    ART
+    MUSIC
+    STATISTICS
+    ENGINEERING
+    MEDICINE
+    PSYCHOLOGY
+    LAW
+}
+
+type Query {
+    getAllLecturers: [Lecturer]
+    getLecturerById(id: ID!): Lecturer
+    getLecturersByDepartment(department: Department): [Lecturer]
+    getLecturersByCourse(course: Course): [Lecturer]
+}
+
+type Mutation {
+    saveLecturer(lecturerName: String, lecturerAddr: String, email: String, phone: String, departments: [Department], courses: [Course]): Lecturer
+    updateLecturer(id: ID!, lecturerName: String, lecturerAddr: String, email: String, phone: String, departments: [Department], courses: [Course]): Lecturer
+    deleteLecturerById(id: ID!): Boolean
+}

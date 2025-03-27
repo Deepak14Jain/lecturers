@@ -20,7 +20,7 @@ public class LecturerService implements ILecturerService{
     }
 
     @Override
-    public Lecturer getLecturerByIdSvc(int lecturerId) {
+    public Lecturer getLecturerByIdSvc(Integer lecturerId) {
         return lecturerRepository.findById(lecturerId).get();
     }
 
@@ -43,8 +43,12 @@ public class LecturerService implements ILecturerService{
     }
 
     @Override
-    public void deleteLecturerByIdSvc(int lecturerId) {
-        lecturerRepository.deleteById(lecturerId);
+    public Boolean deleteLecturerByIdSvc(Integer lecturerId) {
+        if (lecturerRepository.existsById(lecturerId)) {
+            lecturerRepository.deleteById(lecturerId);
+            return true;
+        }
+        return false;
     }
 
     @Override

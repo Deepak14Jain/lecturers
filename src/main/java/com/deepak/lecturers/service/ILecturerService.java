@@ -10,10 +10,10 @@ import java.util.List;
 @Service
 public interface ILecturerService {
     public List<Lecturer> getAllLecturersSvc();
-    public Lecturer getLecturerByIdSvc(int lecturerId);
+    public Lecturer getLecturerByIdSvc(Integer lecturerId);
     public Lecturer saveLecturerSvc(Lecturer lecturer);
     public Lecturer updateLecturerSvc(Lecturer lecturer);
-    public void deleteLecturerByIdSvc(int lecturerId);
+    public Boolean deleteLecturerByIdSvc(Integer lecturerId);
     public List<Lecturer> getLecturersByDepartmentSvc(Department department);
     public List<Lecturer> getLecturersByCourseSvc(Course course);
 }
